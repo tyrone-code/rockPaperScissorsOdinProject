@@ -15,14 +15,26 @@ let getComputerChoice = function () {
 };
 
 //Initialize variables
-let playerSelection = "rock";
-let computerChoice = getComputerChoice();
-
+let selection = "scISSORS";
+let playerSelection = selection.toLowerCase();
+let computerSelection = getComputerChoice();
 // Function to repeat the play
-function playRound(playerSelection, computerChoice) {
-  if (playerSelection === "rock" && computerChoice === "scissors") {
-    console.log("Computer chose scissors you chose rock you win!");
+function playRound(playerSelection, computerSelection) {
+  if (playerSelection === computerSelection) {
+    return `it is a tie you chose ${playerSelection} and the computer chose ${computerSelection}`;
+  } else if (playerSelection === "rock" && computerSelection === "scissors") {
+    return "Computer chose scissors you chose rock you win!";
+  } else if (playerSelection === "rock" && computerSelection === "paper") {
+    return "Computer chose paper you chose rock you lose!";
+  } else if (playerSelection === "paper" && computerSelection === "rock") {
+    return "You chose paper computer chose rock, you win!";
+  } else if (playerSelection === "paper" && computerSelection === "scissors") {
+    return "You chose paper computer chose scissors, you lose!";
+  } else if (playerSelection === "scissors" && computerSelection === "rock") {
+    return "You chose scissors computer chose rock, you lose!";
+  } else if (playerSelection === "scissors" && computerSelection === "paper") {
+    return "You chose scissors computer chose paper, you win!";
   }
 }
 
-playRound(playerSelection, computerChoice);
+playRound(playerSelection, computerSelection);
