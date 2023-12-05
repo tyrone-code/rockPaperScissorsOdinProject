@@ -14,15 +14,15 @@ let getComputerChoice = function () {
   }
 };
 
-// //Initialize variables
-// let playerSelection = "rock";
-// let computerChoice = getComputerChoice();
+//Initialize variables
+let playerSelection = "rock";
+let computerChoice = getComputerChoice();
 
-// // Function to repeat the play
-// function playRound(playerSelection, computerChoice) {
-//   if (playerSelection === "rock" && computerChoice === "scissors") {
-//     console.log("Computer chose scissors you chose rock you win!");
-//   }
-// }
+// Function to repeat the play
+function playRound(playerSelection, computerChoice) {
+  if (playerSelection === "rock" && computerChoice === "scissors") {
+    console.log("Computer chose scissors you chose rock you win!");
+  }
+}
 
-// playRound(playerSelection, computerChoice);
+playRound(playerSelection, computerChoice);
