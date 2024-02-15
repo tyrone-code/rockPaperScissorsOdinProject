@@ -94,15 +94,30 @@ const btnScissors = document.querySelector("#btnScissors");
 btnRock.addEventListener("click", playRoundDemo);
 btnPaper.addEventListener("click", playRoundDemo);
 btnScissors.addEventListener("click", playRoundDemo);
+let computerPoints = 0;
+let userPoints = 0;
 
 function playRoundDemo(e) {
   let id = e.target.id;
   let displayPara = document.querySelector("p");
-  if (id === "btnRock") {
-    displayPara.textContent = "Rock was clicked!";
-  } else if (id === "btnPaper") {
-    displayPara.textContent = "Paper was clicked!";
-  } else {
-    displayPara.textContent = "Scissors was clicked!";
+  let computerSelection = getComputerChoice();
+  let computerPointsDisplay = document.querySelector("#computerPoints");
+  let userPointsDisplay = document.querySelector("#userPoints");
+
+  //---------------------------------------------------------------------------------------------------
+  if (id === "btnRock" && computerSelection === "paper") {
+    computerPoints++;
+    computerPoints.toString();
+    computerPointsDisplay.textContent = computerPoints;
+    displayPara.textContent =
+      "You chose rock! The computer chose paper! You lose!";
+  } else if (id === "btnRock" && computerSelection === "scissors") {
+    userPoints++;
+    userPoints.toString();
+    userPointsDisplay.textContent = userPoints;
+    displayPara.textContent =
+      "You chose rock! The computer chose paper! You win!";
+  } else if (id === "btnRock" && computerSelection === "rock") {
+    displayPara.textContent = "It's a tie no points awarded";
   }
 }
