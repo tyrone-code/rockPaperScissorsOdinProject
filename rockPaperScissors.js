@@ -96,28 +96,93 @@ btnPaper.addEventListener("click", playRoundDemo);
 btnScissors.addEventListener("click", playRoundDemo);
 let computerPoints = 0;
 let userPoints = 0;
+let endScore = 5;
 
 function playRoundDemo(e) {
   let id = e.target.id;
-  let displayPara = document.querySelector("p");
+  let displayDiv = document.querySelector("#display");
   let computerSelection = getComputerChoice();
   let computerPointsDisplay = document.querySelector("#computerPoints");
   let userPointsDisplay = document.querySelector("#userPoints");
+  let winnerText = document.querySelector("#winner");
+  console.log(winnerText);
 
   //---------------------------------------------------------------------------------------------------
-  if (id === "btnRock" && computerSelection === "paper") {
+
+  if (computerPoints === 5) {
+    winnerText.textContent = "You lose!";
+    computerPoints = 0;
+    userPoints = 0;
+    userPointsDisplay.textContent = "0";
+    computerPointsDisplay.textContent = "0";
+  } else if (userPoints === 5) {
+    winnerText.textContent = "You win!";
+    computerPoints = 0;
+    userPoints = 0;
+    userPointsDisplay.textContent = "0";
+    computerPointsDisplay.textContent = "0";
+  } else if (id === "btnRock" && computerSelection === "rock") {
+    winnerText.textContent = "";
+    displayDiv.textContent = "it's a tie! No points awarded!";
+  } else if (id === "btnRock" && computerSelection === "paper") {
+    winnerText.textContent = "";
     computerPoints++;
     computerPoints.toString();
     computerPointsDisplay.textContent = computerPoints;
-    displayPara.textContent =
+    displayDiv.textContent =
       "You chose rock! The computer chose paper! You lose!";
   } else if (id === "btnRock" && computerSelection === "scissors") {
+    winnerText.textContent = "";
+
     userPoints++;
     userPoints.toString();
     userPointsDisplay.textContent = userPoints;
-    displayPara.textContent =
-      "You chose rock! The computer chose paper! You win!";
-  } else if (id === "btnRock" && computerSelection === "rock") {
-    displayPara.textContent = "It's a tie no points awarded";
+    displayDiv.textContent =
+      "You chose rock! The computer chose scissors! You win!";
+  } else if (id === "btnPaper" && computerSelection === "rock") {
+    winnerText.textContent = "";
+
+    userPoints++;
+    userPoints.toString();
+    userPointsDisplay.textContent = userPoints;
+    displayDiv.textContent = "You chose paper the computer chose rock you win!";
+  } else if (id == "btnPaper" && computerSelection === "paper") {
+    winnerText.textContent = "";
+
+    displayDiv.textContent = "It's a tie no points awarded!";
+  } else if (id === "btnPaper" && computerSelection === "scissors") {
+    winnerText.textContent = "";
+
+    computerPoints++;
+    computerPoints.toString();
+    computerPointsDisplay.textContent = computerPoints;
+    displayDiv.textContent =
+      "You chose paper, computer chose scissors you lose!";
+  } else if (id === "btnScissors" && computerSelection === "rock") {
+    winnerText.textContent = "";
+
+    computerPoints++;
+    computerPoints.toString();
+    computerPointsDisplay.textContent = computerPoints;
+    displayDiv.textContent =
+      "You chose scissors, computer chose rock! you lose!";
+  } else if (id === "btnScissors" && computerSelection === "paper") {
+    winnerText.textContent = "";
+
+    userPoints++;
+    userPoints.toString();
+    userPointsDisplay.textContent = userPoints;
+    displayDiv.textContent =
+      "You chose scissors, computer chose paper you win!";
+  } else if (id === "btnScissors" && computerSelection === "scissors") {
+    winnerText.textContent = "";
+
+    displayDiv.textContent = "it's a tie! No points awarded!";
   }
 }
+
+// computerPoints++;
+// computerPoints.toString();
+// computerPointsDisplay.textContent = computerPoints;
+// displayDiv.textContent =
+//   "You chose rock! The computer chose paper! You lose!";
